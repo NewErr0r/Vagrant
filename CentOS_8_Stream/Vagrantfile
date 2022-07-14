@@ -2,9 +2,10 @@
 Vagrant.configure("2") do |config|
   config.vm.box = "generic/centos8s"
 
-  config.vm.network "public_network", bridge: "br0"
-
-  config.vm.define "CentOS"
+  config.vm.box_check_update = false # не проверять репозиторий на наличие обновлений
+  config.ssh.username = 'vagrant'
+  config.ssh.password = 'vagrant'
+  config.ssh.keys_only = false  # можно подключаться по паролю
 
   config.vm.provider "virtualbox" do |vb|
     vb.name = "CentOS"
@@ -13,9 +14,17 @@ Vagrant.configure("2") do |config|
   end
 
   config.vm.hostname = "CentOS"
+  config.vm.network "public_network", bridge: "br0", ip: "192.168.0.150"
 
-  config.vm.provision "shell", inline: <<-SHELL
-    dnf install nginx -y #shell script
-    #...
-  SHELL
+###########Блок для запуска  Ansible-playbook#################
+#  config.vm.provision "ansible" do |ansible|
+#    ansible.playbook = "playbook.yml"
+#  end
+##############################################################
+
+##########Блок для запуска  SHELL-Scripts#####################
+#config.vm.provision "shell", inline: <<-SHELL
+#  #comands_scripts ...
+#SHELL
+##############################################################
 end
