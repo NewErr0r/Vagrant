@@ -3,9 +3,6 @@ Vagrant.configure("2") do |config|
   config.vm.box = "generic/centos8s"
 
   config.vm.box_check_update = false # не проверять репозиторий на наличие обновлений
-  config.ssh.username = 'vagrant'
-  config.ssh.password = 'vagrant'
-  config.ssh.keys_only = false  # можно подключаться по паролю
 
   config.vm.provider "virtualbox" do |vb|
     vb.name = "CentOS"
