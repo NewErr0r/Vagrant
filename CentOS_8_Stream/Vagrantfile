@@ -1,0 +1,21 @@
+
+Vagrant.configure("2") do |config|
+  config.vm.box = "generic/centos8s"
+
+  config.vm.network "public_network", bridge: "br0"
+
+  config.vm.define "CentOS"
+
+  config.vm.provider "virtualbox" do |vb|
+    vb.name = "CentOS"
+    vb.cpus = 4
+    vb.memory = "4096"
+  end
+
+  config.vm.hostname = "CentOS"
+
+  config.vm.provision "shell", inline: <<-SHELL
+    dnf install nginx -y #shell script
+    #...
+  SHELL
+end

@@ -1,0 +1,8 @@
+#vagrant up - запуск VM
+#vagrant halt - выключить VM
+#vagrant ssh - подключиться к VM (sudo passwd root - задать пароль для root)
+#vagrant destroy - удалить VM
+#vagrant box list - список доступных "боксов"
+#vagrant provision - запустить на ключённой VM блок "provision (shell, ansible...)"
+#vagrant box remove <name> - удалить "бокс"
+
